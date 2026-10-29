@@ -1,3 +1,6 @@
+/** @file MainSource.cpp
+ * @brief Application startup, shared state, and synchronous Win32 UI dispatch.
+ */
 #include "pch.h"
 #include "ProgramHeader.h"
 
@@ -29,7 +32,12 @@ WCHAR findWhat[128];
 WCHAR replaceWith[128];
 UINT idFindMsg = 0;
 
-// Entry point
+/**
+ * @brief Restore font preferences, create the UI, and run the message loop.
+ * @param lpCmdLine Raw argument tail supplied by Windows (not the full command).
+ * @warning The current CommandLineToArgvW call and borrowed path ownership need
+ * repair; see docs/KNOWN_ISSUES.md. Shutdown terminates through ExitProcess.
+ */
 int APIENTRY wWinMain(
 	_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -127,6 +135,11 @@ int APIENTRY wWinMain(
 	}
 	ExitProcess(0);
 }
+/**
+ * @brief Create child controls, find/replace state, and application fonts.
+ * @param hWnd Parent window receiving WM_CREATE.
+ * @return Zero on success, or -1 to abort window creation on a setup failure.
+ */
 LRESULT InitProgram(HWND hWnd)
 {
 	hDirEdit = CreateWindowExW(
@@ -174,6 +187,10 @@ LRESULT InitProgram(HWND hWnd)
 	if (hDirEditFont == nullptr) return -1;
 	return 0;
 }
+/**
+ * @brief Apply the borrowed font, zoom/EOL styles, text limit, and 100% zoom.
+ * @note The control uses the font handle without taking ownership of it.
+ */
 void SetEditProgramDefaults(HWND hEditControl, HFONT hDefFont)
 {
 	SendMessageW(hEditControl, WM_SETFONT, _WPARAM(hDefFont), TRUE);
@@ -556,6 +573,10 @@ LSTATUS WINAPI OpenDefRegKey(PHKEY lpRegOut, LPDWORD lpDisposition)
 		nullptr, lpRegOut, lpDisposition
 	);
 }
+/**
+ * @brief Prompt for unsaved edits, open the first dropped path, and DragFinish.
+ * @param hDFiles Drop handle consumed here, including when the user cancels.
+ */
 void OpenDropFile(HDROP hDFiles)
 {
 	auto func = [](LPARAM lParam)->LRESULT
@@ -585,6 +606,11 @@ void OpenDropFile(HDROP hDFiles)
 	ExecuteHandleUnsaved(toExec, _LPARAM(hDFiles));
 	DragFinish(hDFiles);
 }
+/**
+ * @brief Toggle wrapping by creating a replacement multiline edit control.
+ * @note Copies text, selection, font, and zoom, then replaces hMainEdit. Undo
+ * history is lost and text notifications can change the document's dirty flag.
+ */
 void SwapMainEditControls(HWND hWnd)
 {
 	MENUITEMINFOW mii{
@@ -643,6 +669,7 @@ void SwapMainEditControls(HWND hWnd)
 		}
 	}
 }
+/// Insert local time (without seconds) and short date as an undoable edit.
 void WriteDateHour()
 {
 	int ccTime = GetTimeFormatEx(
@@ -670,6 +697,7 @@ void WriteDateHour()
 	SendMessageW(hMainEdit, EM_REPLACESEL, TRUE, _LPARAM(dateTimeString));
 	delete[] dateTimeString;
 }
+/// Toggle the status bar and its menu check, resizing the editor to fit.
 void ChangeStatusBarState(HWND hWnd)
 {
 	RECT rEdit;
@@ -699,6 +727,12 @@ void ChangeStatusBarState(HWND hWnd)
 		SWP_SHOWWINDOW
 	);
 }
+/**
+ * @brief Process modeless find/replace notifications using the edit text handle.
+ * @param lpfr Borrowed common-dialog notification, valid during this call.
+ * @warning Replacing a selection can invalidate the locked text pointer; the
+ * empty-search Replace All path does not advance. See docs/KNOWN_ISSUES.md.
+ */
 void FindReplaceProc(LPFINDREPLACE lpfr)
 {
 	SetCursor(LoadCursorW(nullptr, (IDC_WAIT)));

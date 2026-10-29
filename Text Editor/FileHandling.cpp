@@ -1,3 +1,8 @@
+/** @file FileHandling.cpp
+ * @brief Unsaved-change gating and whole-document encoding conversions/I/O.
+ * @details Public contracts and current error-handling limits are in
+ * ProgramHeader.h; all routines operate on the shared UI/document state.
+ */
 #include "pch.h"
 #include "ProgramHeader.h"
 LRESULT ExecuteHandleUnsaved(PHANDLEUNSAVEDFUNC Func, LPARAM lParam)

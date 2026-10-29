@@ -1,5 +1,7 @@
-// Header containing the Standatd and Windows headers
-// Despite the name, currently not a precompiled header
+/** @file pch.h
+ * @brief Shared Windows/C++ includes and the common-controls v6 manifest.
+ * @note Despite its name, this is not configured as a precompiled header.
+ */
 #pragma once
 
 //Enable Visual styles

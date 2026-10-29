@@ -1,3 +1,8 @@
+/** @file FontHandling.cpp
+ * @brief Default LOGFONT values, registry persistence, and GDI font creation.
+ * @details Callers own registry keys and returned fonts. Public contracts and
+ * registry serialization limitations are documented in ProgramHeader.h.
+ */
 #include  "pch.h"
 #include "ProgramHeader.h"
 void SetDefaultFont(LPLOGFONTW lpLf)

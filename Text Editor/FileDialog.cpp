@@ -1,3 +1,8 @@
+/** @file FileDialog.cpp
+ * @brief Native COM Open and Save As dialogs with custom encoding selection.
+ * @details Each call initializes COM, releases interfaces, and uninitializes
+ * COM on the UI thread. Public contracts are documented in ProgramHeader.h.
+ */
 #include "pch.h"
 #include "ProgramHeader.h"
 LRESULT WINAPI ShowOpenFileDialog(LPARAM lParam)
