@@ -1,0 +1,199 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral (Default) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEUD)
+LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDM_MAINMENU MENU
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "New\tCtrl+N",                 ID_FILE_NEW
+        MENUITEM "New Window\tCtrl+Shift+N",    ID_FILE_NEWWINDOW
+        MENUITEM "Open\tCtrl+O",                ID_FILE_OPEN
+        MENUITEM "Save\tCtrl+S",                ID_FILE_SAVE, INACTIVE
+        MENUITEM "Save as\tCtrl+Shift+S",       ID_FILE_SAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        ID_FILE_EXIT
+    END
+    POPUP "Edit"
+    BEGIN
+        MENUITEM "Undo\tCtrl+Z",                ID_EDIT_UNDO
+        MENUITEM "Cut\tCtrl+X",                 ID_EDIT_CUT, INACTIVE
+        MENUITEM "Copy\tCtrl+C",                ID_EDIT_COPY, INACTIVE
+        MENUITEM "Paste\tCtrl+V",               ID_EDIT_PASTE
+        MENUITEM "Delete\tDel",                 ID_EDIT_DELETE, INACTIVE
+        MENUITEM SEPARATOR
+        MENUITEM "Replace\tCtrl+H",             ID_EDIT_REPLACE
+        MENUITEM "Find\tCtrl+F",                ID_EDIT_FIND
+        MENUITEM "Go to\tCtrl+G",               ID_EDIT_GOTO
+        MENUITEM SEPARATOR
+        MENUITEM "Select all\tCtrl+A",          ID_EDIT_SELECTALL
+        MENUITEM "Hour/Date\tF5",               ID_EDIT_HOUR
+    END
+    POPUP "Format"
+    BEGIN
+        MENUITEM "Word Wrap",                   ID_FORMAT_WORDWRAP
+        MENUITEM "Font",                        ID_FORMAT_FONT
+    END
+    POPUP "View"
+    BEGIN
+        POPUP "Zoom"
+        BEGIN
+            MENUITEM "Zoom In\tCtrl+Plus",          ID_VIEW_ZOOMIN
+            MENUITEM "Zoom Out\tCtrl+Minus",        ID_VIEW_ZOOMOUT
+            MENUITEM "Restore Default Zoom\tCtrl+0", ID_VIEW_RESTOREZOOM
+        END
+        MENUITEM "Status bar",                  ID_VIEW_STATUSBAR, CHECKED
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "About",                       ID_HELP_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCELERATOR1 ACCELERATORS
+BEGIN
+    VK_F5,          ID_ACCELDATEHOUR,       VIRTKEY, NOINVERT
+    "F",            ID_ACCELFIND,           VIRTKEY, CONTROL, NOINVERT
+    "G",            ID_ACCELGOTO,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_ACCELNEW,            VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_ACCELNEWWINDOW,      VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "O",            ID_ACCELOPEN,           VIRTKEY, CONTROL, NOINVERT
+    VK_NUMPAD0,     ID_ACCELRESTOREZOOM1,   VIRTKEY, CONTROL, NOINVERT
+    "0",            ID_ACCELRESTOREZOOM2,   VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_ACCELSAVE,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_ACCELSAVEAS,         VIRTKEY, SHIFT, CONTROL, NOINVERT
+    VK_OEM_MINUS,   ID_ACCELZOOMDEC1,       VIRTKEY, CONTROL, NOINVERT
+    VK_SUBTRACT,    ID_ACCELZOOMDEC2,       VIRTKEY, CONTROL, NOINVERT
+    VK_ADD,         ID_ACCELZOOMINC1,       VIRTKEY, CONTROL, NOINVERT
+    VK_OEM_PLUS,    ID_ACCELZOOMINC2,       VIRTKEY, CONTROL, NOINVERT
+    "H",            ID_ACCELREPLACE,        VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_GOTO DIALOGEX 0, 0, 213, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Go to"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Go to",IDOK,84,41,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,148,41,50,14
+    EDITTEXT        IDGOTO_EDIT,16,23,182,15,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Index of line:",IDC_STATIC,17,12,60,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_GOTO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 206
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_GOTO AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Neutral (Default) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Bulgarian (Bulgaria) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_BGR)
+LANGUAGE LANG_BULGARIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+
+#endif    // Bulgarian (Bulgaria) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
